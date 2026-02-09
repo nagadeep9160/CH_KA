@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Chinnu ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('Ashup.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            animation: fadeIn 2s ease-in;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+            animation: slideDown 1.5s ease-out;
+        }
+        
+        .wishes {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            line-height: 2;
+            margin-bottom: 40px;
+            animation: fadeInUp 2s ease-out 0.5s both;
+        }
+        
+        .quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: rgba(255, 192, 203, 0.95);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid rgba(255, 192, 203, 0.7);
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 2s ease-out 1s both;
+        }
+        
+        .heart {
+            display: inline-block;
+            color: #ff1493;
+            animation: heartbeat 1.5s infinite;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            font-size: 2rem;
+            color: rgba(255, 20, 147, 0.6);
+            animation: float 6s infinite;
+            z-index: 0;
+        }
+
+        .click-message {
+            position: fixed;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff1493;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8), 0 0 20px rgba(255, 20, 147, 0.6);
+            pointer-events: none;
+            z-index: 999;
+            animation: floatUp 2s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-50px) scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .wishes {
+                font-size: 1.2rem;
+            }
+            .quote {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Happy Birthday Chinnu <span class="heart">❤️</span></h1>
+
+        <div class="wishes">
+            My Dearest Chinnu,<br><br> On this special day, I want you to know that you are the most beautiful gift life has given me. Your smile lights up my darkest days, and your love fills my heart with endless joy.
+            <br><br> Every moment with you is a treasure I hold close to my heart. You are not just my girlfriend, you are my best friend, my soulmate, and my forever love.
+            <br><br> May this year bring you all the happiness, success, and love that you deserve. I promise to be by your side through every moment, making each day as special as you are to me.
+        </div>
+
+        <div class="quote">
+            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
+            <br>— Yours Kanna❤️
+        </div>
+
+        <div class="quote">
+            "You are my today and all of my tomorrows."
+            <br>— kanna❤️
+        </div>
+
+        <div class="quote">
+            "I love you not only for what you are, but for what I am when I am with you.
+            <br> and kanna oka mata chepana nennu netho unna prathi nimisham lo nenu ninnu na jevitam lo bagam ga chuskunanu 
+            <br> oka vela mana destiny manalni kalpina kalapaka poina nuv ilage santhoshamga undali ani korukuntuna  kanna❤️ ."
+            <br>— Yours lovingly kanna❤️
+        </div>
+
+        <div class="wishes">
+            Happy Birthday, my love! <span class="heart">💕</span>
+            <br> Forever Yours Kanna❤️
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-hearts');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        setInterval(createHeart, 800);
+
+        // Click interaction - create floating "Kanna❤️" message
+        document.addEventListener('click', function(e) {
+            const messages = ['Chinnu❤️Kanna', '💕Chinnu', 'Love you Chinnu 💖', '❤️ Kanna ❤️', 'Love you Kanna 💕'];
+            const message = document.createElement('div');
+            message.classList.add('click-message');
+            message.innerHTML = messages[Math.floor(Math.random() * messages.length)];
+            message.style.left = e.clientX + 'px';
+            message.style.top = e.clientY + 'px';
+            message.style.transform = 'translate(-50%, -50%)';
+            
+            document.body.appendChild(message);
+
+            setTimeout(() => {
+                message.remove();
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
