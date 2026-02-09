@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Chinnu ❤️</title>
+    <title>Miss You Chinnu ❤️</title>
     <style>
         * {
             margin: 0;
@@ -77,25 +77,26 @@
         
         .heart {
             display: inline-block;
-            color: #ff1493;
+            color: #b22222;
             animation: heartbeat 1.5s infinite;
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+            text-shadow: 0 0 10px rgba(178, 34, 34, 0.8);
         }
         
         .floating-hearts {
             position: fixed;
             font-size: 2rem;
-            color: rgba(255, 20, 147, 0.6);
+            color: rgba(178, 34, 34, 0.7);
             animation: float 6s infinite;
             z-index: 0;
+            pointer-events: none;
         }
-
+        
         .click-message {
             position: fixed;
             font-size: 1.5rem;
             font-weight: bold;
-            color: #ff1493;
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8), 0 0 20px rgba(255, 20, 147, 0.6);
+            color: #b22222;
+            text-shadow: 0 0 10px rgba(178, 34, 34, 0.8), 0 0 20px rgba(178, 34, 34, 0.6);
             pointer-events: none;
             z-index: 999;
             animation: floatUp 2s ease-out forwards;
@@ -158,7 +159,7 @@
                 opacity: 0;
             }
         }
-
+        
         @keyframes floatUp {
             0% {
                 transform: translateY(0) scale(1);
@@ -189,71 +190,222 @@
 </head>
 
 <body>
+    <title>For Chinnu — A Farewell</title>
+
     <div class="container">
-        <h1>Happy Birthday Chinnu <span class="heart">❤️</span></h1>
+        <h1>To Chinnu</h1>
 
         <div class="wishes">
-            My Dearest Chinnu,<br><br> On this special day, I want you to know that you are the most beautiful gift life has given me. Your smile lights up my darkest days, and your love fills my heart with endless joy.
-            <br><br> Every moment with you is a treasure I hold close to my heart. You are not just my girlfriend, you are my best friend, my soulmate, and my forever love.
-            <br><br> May this year bring you all the happiness, success, and love that you deserve. I promise to be by your side through every moment, making each day as special as you are to me.
-        </div>
-
-        <div class="quote">
-            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
-            <br>— Yours Kanna❤️
-        </div>
-
-        <div class="quote">
-            "You are my today and all of my tomorrows."
-            <br>— kanna❤️
-        </div>
-
-        <div class="quote">
-            "I love you not only for what you are, but for what I am when I am with you.
-            <br> and kanna oka mata chepana nennu netho unna prathi nimisham lo nenu ninnu na jevitam lo bagam ga chuskunanu 
-            <br> oka vela mana destiny manalni kalpina kalapaka poina nuv ilage santhoshamga undali ani korukuntuna  kanna❤️ ."
-            <br>— Yours lovingly kanna❤️
-        </div>
-
-        <div class="wishes">
-            Happy Birthday, my love! <span class="heart">💕</span>
-            <br> Forever Yours Kanna❤️
+            Chinnu,<br><br> I'm going to miss you a lot. This was not easy — I had to make the painful decision to move out so you can live a life filled with the happiest moments. I want you to have every joy and every chance for a better future.
+            <br><br> I'll always cherish the memories we made together, and I hope you find more smiles than sorrow. Take care, and may your days be bright and full of love.
+            <br><br> With love,
+            <br>— Kanna
         </div>
     </div>
 
+    <!-- Modal dialog component and dialog flow -->
+    <div id="copilot-modal-overlay" style="display:none;"></div>
+    <div id="copilot-modal" style="display:none;">
+        <div id="copilot-modal-box">
+            <div id="copilot-modal-message"></div>
+            <div id="copilot-modal-buttons"></div>
+        </div>
+    </div>
+
+    <style>
+        #copilot-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 10000;
+        }
+        
+        #copilot-modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            /* place at bottom of viewport */
+            justify-content: center;
+            padding-bottom: 32px;
+            /* space from bottom */
+            z-index: 10001;
+            pointer-events: none;
+        }
+        
+        #copilot-modal-box {
+            background: #fff;
+            color: #222;
+            padding: 20px 22px;
+            border-radius: 10px;
+            min-width: 280px;
+            max-width: 90vw;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .4);
+            pointer-events: auto;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        #copilot-modal-message {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        
+        #copilot-modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .copilot-modal-btn {
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .copilot-primary {
+            background: #b22222;
+            color: #fff;
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+        
+        .copilot-modal-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .copilot-modal-btn:active {
+            transform: scale(.98);
+        }
+        
+        #copilot-modal-box {
+            transform: translateY(12px);
+            opacity: 0;
+            transition: transform .18s ease, opacity .18s ease;
+        }
+        
+        #copilot-modal-box.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .copilot-secondary {
+            background: #eee;
+            color: #222;
+        }
+    </style>
+
     <script>
-        // Create floating hearts
+        function showDialog(message, buttons) {
+            return new Promise(resolve => {
+                const overlay = document.getElementById('copilot-modal-overlay');
+                const modal = document.getElementById('copilot-modal');
+                const msg = document.getElementById('copilot-modal-message');
+                const btns = document.getElementById('copilot-modal-buttons');
+
+                msg.textContent = message;
+                btns.innerHTML = '';
+
+                const box = document.getElementById('copilot-modal-box');
+                buttons.forEach((b, i) => {
+                    const button = document.createElement('button');
+                    button.className = 'copilot-modal-btn ' + (i === 0 ? 'copilot-primary' : 'copilot-secondary');
+                    button.textContent = b;
+                    button.addEventListener('click', () => {
+                        overlay.style.display = 'none';
+                        modal.style.display = 'none';
+                        box.classList.remove('show');
+                        overlay.onclick = null;
+                        resolve(b);
+                    });
+                    btns.appendChild(button);
+                });
+
+                // allow clicking overlay to dismiss (falls back to second button or first)
+                overlay.onclick = () => {
+                    overlay.style.display = 'none';
+                    modal.style.display = 'none';
+                    box.classList.remove('show');
+                    overlay.onclick = null;
+                    const fallback = buttons[1] || buttons[0] || '';
+                    resolve(fallback);
+                };
+
+                overlay.style.display = 'block';
+                modal.style.display = 'flex';
+                // animate box from bottom
+                setTimeout(() => box.classList.add('show'), 10);
+                // focus first button
+                const first = btns.querySelector('button');
+                if (first) first.focus();
+            });
+        }
+
+        async function runHeartFlow() {
+            const choice = await showDialog('I need to ask... Will you open my heart?', ['Open my heart', 'Not required']);
+            if (choice === 'Open my heart') {
+                const sure = await showDialog('This may hurt to know. Are you sure you want to see?', ['Yes', 'No']);
+                if (sure === 'Yes') {
+                    const final = await showDialog('Do you truly want to see who lives inside my heart? Be honest.', ['Yes', 'No']);
+                    if (final === 'Yes') {
+                        // Replace the page with a black blank page and a more emotional breakup message
+                        document.documentElement.innerHTML = '<head><meta charset="utf-8"><title></title></head>\n<body style="margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;">\n  <div style="max-width:800px;text-align:center;font-family:Arial, sans-serif;font-size:1.25rem;padding:24px;line-height:1.5;">Chinnu, I\'m going to miss you a lot. I had to make the painful decision to move out so you could have the happiest moments ahead. I hope you find a better life, full of joy and love — I will always treasure what we had.</div>\n</body>';
+                        return; // stop further dialogs since page was replaced
+                    } else {
+                        await showDialog('I understand. I will keep these wounds to myself.', ['Close']);
+                    }
+                } else {
+                    await showDialog('I get it. I will step back and hide this pain.', ['Close']);
+                }
+            } else {
+                await showDialog('Alright. If you don\'t want to open it, I will hold on to the pieces alone.', ['Close']);
+            }
+        }
+
+        // Start the flow when user presses anywhere on page or on load (non-intrusive)
+        window.addEventListener('load', () => {
+            // small delay so the page finishes animating
+            setTimeout(runHeartFlow, 600);
+        });
+    </script>
+    <script>
+        // Create floating broken-hearts
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('floating-hearts');
-            heart.innerHTML = '❤️';
+            heart.innerHTML = '💔';
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDelay = Math.random() * 3 + 's';
             heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
             document.body.appendChild(heart);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 7000);
+            setTimeout(() => heart.remove(), 7000);
         }
 
         setInterval(createHeart, 800);
 
-        // Click interaction - create floating "Kanna❤️" message
+        // Click interaction - create floating broken-heart messages
         document.addEventListener('click', function(e) {
-            const messages = ['Chinnu❤️Kanna', '💕Chinnu', 'Love you Chinnu 💖', '❤️ Kanna ❤️', 'Love you Kanna 💕'];
+            const messages = [
+                'Chinnu💔Kanna',
+                '💔 Chinnu',
+                'I miss you, Chinnu 💔',
+                'Broken — Kanna 💔',
+                'I hope you heal 💔'
+            ];
+
             const message = document.createElement('div');
             message.classList.add('click-message');
             message.innerHTML = messages[Math.floor(Math.random() * messages.length)];
             message.style.left = e.clientX + 'px';
             message.style.top = e.clientY + 'px';
             message.style.transform = 'translate(-50%, -50%)';
-            
+
             document.body.appendChild(message);
 
-            setTimeout(() => {
-                message.remove();
-            }, 2000);
+            setTimeout(() => message.remove(), 2000);
         });
     </script>
 </body>
