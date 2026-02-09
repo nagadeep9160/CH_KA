@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miss You Chinnu ❤️</title>
     <style>
@@ -14,25 +14,24 @@
         
         body {
             font-family: 'Georgia', serif;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('ashup1.jpeg') no-repeat center center fixed;
+            background: url('ashup1.jpg') no-repeat center center fixed;
             background-size: cover;
             overflow: hidden;
             position: relative;
             cursor: pointer;
+            color: #fff;
         }
+        /* translucent overlay so background image shows through */
         
         body::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
             z-index: 1;
         }
         
@@ -190,13 +189,12 @@
 </head>
 
 <body>
-    <title>For Chinnu — A Farewell</title>
 
     <div class="container">
         <h1>To Chinnu</h1>
 
         <div class="wishes">
-            Chinnu,<br><br> I'm going to miss you a lot. This was not easy — I had to make the painful decision to move out so you can live a life filled with the happiest moments. I want you to have every joy and every chance for a better future.
+            Chinnu,<br><br> I'm going to miss you a lot. I had to make the painful decision to move out so you could have the happiest moments ahead. I hope you find a better life, full of joy and love — I will always treasure what we had.
             <br><br> I'll always cherish the memories we made together, and I hope you find more smiles than sorrow. Take care, and may your days be bright and full of love.
             <br><br> With love,
             <br>— Kanna
@@ -350,9 +348,12 @@
                 if (sure === 'Yes') {
                     const final = await showDialog('Do you truly want to see who lives inside my heart? Be honest.', ['Yes', 'No']);
                     if (final === 'Yes') {
-                        // Replace the page with a black blank page and a more emotional breakup message
-                        document.documentElement.innerHTML = '<head><meta charset="utf-8"><title></title></head>\n<body style="margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;">\n  <div style="max-width:800px;text-align:center;font-family:Arial, sans-serif;font-size:1.25rem;padding:24px;line-height:1.5;">Chinnu, I\'m going to miss you a lot. I had to make the painful decision to move out so you could have the happiest moments ahead. I hope you find a better life, full of joy and love — I will always treasure what we had.</div>\n</body>';
-                        return; // stop further dialogs since page was replaced
+                        // Replace the entire document with a minimal page showing only the background image and the farewell message.
+                        document.documentElement.innerHTML = '<!doctype html>' +
+                            '<html><head><meta charset="utf-8"><title>For Chinnu</title>' +
+                            '<style>html,body{height:100%;margin:0}body{background:url("ashup1.jpg") no-repeat center center fixed;background-size:cover;display:flex;align-items:center;justify-content:center;font-family:Georgia, serif;color:#fff} .msg{background:rgba(0,0,0,0.6);padding:32px;border-radius:8px;max-width:900px;text-align:center;font-size:1.25rem;line-height:1.6}</style>' +
+                            '</head><body><div class="msg">Chinnu, I\'m going to miss you a lot. I had to make the painful decision to move out so you could have the happiest moments ahead. I hope you find a better life, full of joy and love — I will always treasure the memories we shared. Ee 3 months lo nuvvu naatho share chesina badha, feelings, nammakam—anni nenu gurthu pettukunta. Nuvvu natho open ga undi, nee pain ni cheppav—adi chala special. Nenu kuda nee gurinchi genuine ga care chesa, nee happy undali ani korukunta. Kani ipudu nenu clear ga artham chesukunnanu: ee bond continue cheyyadam mana iddariki correct kaadu. Naku already na life lo commitments unnayi , adi nenu mundu clear ga cheppaledu—adi na tappu, sorry. Stay happy chinnu . Nee married life struggles, nee past pains telisi kuda, nenu ila involve avvaddu ani decide ayyannu. Nuvvu chala strong ammayivi—nee life lo inka better days ravochu, happy ga undochu. Nee pain ni overcome cheyyadam kosam, family/friends tho share cheyyi or professional counselor help teesuko (nenu kuda wish chestunna adi). Nenu nee kosam pray chestunna, but ee relation nunchi dooram avvali—ee message last. Nenu contact cheyyatledu, nuvvu kuda please try cheyyaku. Take care of yourself, really. Nee future bright ga undali ani korukuntunna.  Where ever u go , who ever you stay with stay happy thats it Goodbye.  Take care Chinu good bye.</div></body></html>';
+                        return;
                     } else {
                         await showDialog('I understand. I will keep these wounds to myself.', ['Close']);
                     }
